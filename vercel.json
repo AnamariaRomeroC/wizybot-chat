@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/products/demo-product-list",
+      "destination": "https://api.wizybot.com/products/demo-product-list"
+    }
+  ]
+}
