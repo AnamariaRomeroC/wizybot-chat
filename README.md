@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+Wizybot Chat Interface
+======================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an implementation of a basic chat interface that simulates the Wizybot UI/UX experience, developed as part of a technical evaluation. The interface allows users to interact with a simulated AI agent, receive text responses and product recommendations in a carousel.
 
-## Available Scripts
+Tech Stack
+----------
+* React.
+* TypeScript.
+* Tailwind CSS.
+* HTML5 & CSS3.
 
-In the project directory, you can run:
+Prerequisites
+-------------
+* Node.js.
+* npm.
+* nvm.
 
-### `npm start`
+Configuration and Installation (After Cloning from GitHub)
+-----------------------------------------------------------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Navigate to the Project Folder:
+    Open your terminal and navigate to the directory where the repository was cloned.
+    cd wizybot-chat
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. Install Dependencies:
+    In the root project folder, install all necessary dependencies defined in `package.json`:
+    npm install
 
-### `npm test`
+3. Verify Proxy Configuration (Important for Development):
+    This project uses a proxy for product API requests. The configuration should already be in the `package.json` file.
+    Verify that the following line is present at the top level of the JSON object in `package.json`:
+    “`proxy`: `https://api.wizybot.com`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4.  Verify Public Files (Logo):
+    Make sure the following files are present in the `public/` folder:
+    `wizybot-logo.png`.
 
-### `npm run build`
+Running App
+----------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Start the development server:
+    npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  The application will automatically open in your web browser at http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+API
+-------------
+* Wizybot Products API (Demo): https://api.wizybot.com/products/demo-product-list
+    * This API is used to get the list of products when the user requests recommendations.
+    * Due to browser CORS policies, direct requests from the client (browser) to this API are blocked. The `proxy` configuration in `package.json` fixes this for the development environment.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Structure
+-----------------------------------------------------------------
+wizybot-chat/
+├── public/
+│   ├── index.html         
+│   ├── wizybot-logo.png   
+│   └── wizybot-favicon.png 
+│   └── ...                
+├── src/
+│   ├── components/        
+│   │   ├── atoms/         
+│   │   │   ├── SendIcon.tsx
+│   │   │   ├── TypingDots.tsx
+│   │   │   └── WizybotLogoIcon.tsx
+│   │   ├── molecules/     
+│   │   │   ├── MessageBubble.tsx
+│   │   │   └── ProductCard.tsx
+│   │   └── organisms/     
+│   │       ├── ChatHeader.tsx
+│   │       ├── MessageInputFooter.tsx
+│   │       └── ProductCarousel.tsx
+│   ├── types.ts           
+│   ├── App.css            
+│   ├── App.tsx            
+│   ├── index.css          
+│   └── index.tsx          
+│   └── ...                
+├── package.json          
+├── tailwind.config.js     
+└── tsconfig.json          
